@@ -296,7 +296,7 @@ class RequisicaoController extends Controller
         $unidadeId = $perfil->unidade_id;
         foreach ($bibliotecas as $biblioteca) {
             if($unidadeId == $biblioteca->unidade_id) {
-                \Illuminate\Support\Facades\Mail::send(new AlertaFichaMail($biblioteca, Auth::user()));
+                \Illuminate\Support\Facades\Mail::send(new AlertaFichaMail($biblioteca, Auth::user(), $unidade));
             }
         }
 

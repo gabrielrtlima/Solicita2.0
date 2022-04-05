@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Unidade;
 use App\Models\Biblioteca;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
@@ -21,11 +22,14 @@ class AlertaFichaMail extends Mailable
 
     private $biblioteca;
     private $usuarioSolicitante;
+    private $unidade;
 
-    public function __construct(Biblioteca $biblioteca, User $usuarioSolicitante)
+
+    public function __construct(Biblioteca $biblioteca, User $usuarioSolicitante, $unidade)
     {
         $this->biblioteca = $biblioteca;
         $this->usuarioSolicitante = $usuarioSolicitante;
+        $this->unidade = $unidade;
     }
 
     /**
@@ -37,8 +41,9 @@ class AlertaFichaMail extends Mailable
     {
         $biblioteca = $this->biblioteca;
         $usuarioSolicitante = $this->usuarioSolicitante;
+        $unidade = $this->unidade;
         $this->subject("Alerta ficha catalográfica");
         $this->to($biblioteca->email, $biblioteca->nome);
-        return $this->markdown('mails.alerta_ficha', compact("usuarioSolicitante","biblioteca"));
+        return $this->markdown('mails.alerta_ficha', compact("usuarioSolicitante","biblioteca", 'unidade'));
     }
 }
