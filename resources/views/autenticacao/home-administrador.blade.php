@@ -39,24 +39,24 @@
             </a>
         </div>
 
-        <div class="text-center p-5 shadow caixaSelecao">
-            <a href="{{ route("listar-biblioteca")}}">
-                <div class="text-center pb-3">
-                    <img class="" src="images/listagem de biblioteca.svg" height="100px">
-                </div>
-                <div class="text-center">
-                    <div style="color: var(--textcolor)" class="textoCaixa">Listagem de Bibliotecas</div>
-                </div>
-            </a>
-        </div>
-
-        <div class="text-center p-5 shadow caixaSelecao">
+        <div class="text-center p-5 shadow caixaSelecao" style="background-color: white">
             <a href="{{ route("listar-usuario")}}">
                 <div class="text-center pb-3">
                     <i style="color: var(--textcolor)" class="fa-regular fa-address-book fa-7x"></i>
                 </div>
                 <div class="text-center">
                     <div style="color: var(--textcolor)" class="textoCaixa">Listagem de Usuários</div>
+                </div>
+            </a>
+        </div>
+
+        <div class="text-center p-5 shadow caixaSelecao" style="background-color: white">
+            <a href="{{ route("gerenciar-campi")}}">
+                <div class="text-center pb-3">
+                    <i style="color: var(--textcolor)" class="fa-solid fa-building-columns fa-7x"></i>
+                </div>
+                <div class="text-center">
+                    <div style="color: var(--textcolor)" class="textoCaixa">Gerenciar Campi</div>
                 </div>
             </a>
         </div>

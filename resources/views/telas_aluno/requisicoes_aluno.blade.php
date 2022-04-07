@@ -14,8 +14,7 @@
                     <thead>
                     <tr>
                         <th scope="col" align="center">#</th>
-                        <th scope="col" align="center" class="titleColumn text-center" style="cursor: pointer">Curso
-                        </th>
+                        <th scope="col" align="center" class="titleColumn text-center" style="cursor: pointer">Curso</th>
                         <th scope="col" align="center" class="titleColumn text-center" style="cursor:pointer;">Data e Hora</th>
                         <th class="text-center" scope="col" align="center" style="cursor:pointer">Tipo de Documento</th>
                         <th class="text-center" scope="col" align="center" style="cursor:pointer">Status</th>
@@ -105,8 +104,8 @@
                                     @if($rd->requisicao_id == $r->id)
                                         <!-- Documentos Solicitados -->
                                             @if($rd->status=="Em andamento")
-                                                <li class="my-1" style="color:#D07D00; background-color: #FBBC04; border-radius: 0.5rem">
-                                                    {{$rd->status}}
+                                                <li class="my-1" style="color: #F9CB2A">
+                                                    <strong>{{$rd->status}}</strong>
                                                     <span class="glyphicon glyphicon-time"
                                                           style="overflow: hidden; color:#db6700"
                                                           data-toggle="tooltip" data-placement="top"
@@ -118,8 +117,8 @@
                                                 @php
                                                     $tudoAndamento = false
                                                 @endphp
-                                                <li style="color:#00650A; background-color: var(--confirmar); border-radius: 0.5rem">
-                                                    {{$rd->status}}
+                                                <li style="color: #00A23E;" >
+                                                    <strong>{{$rd->status}}</strong>
                                                     <span class="glyphicon glyphicon-ok-sign"
                                                           style="overflow: hidden; color:green"
                                                           data-toggle="tooltip" data-placement="top"
@@ -133,8 +132,8 @@
                                                 @php
                                                     $tudoAndamento = false
                                                 @endphp
-                                                <li style="color: #1C477E; background-color: #438EEF; border-radius: 0.5rem;">
-                                                    {{$rd->status}}
+                                                <li style="color: #1C477E">
+                                                    <strong>{{$rd->status}}</strong>
                                                     <a data-toggle="tooltip" data-placement="left"
                                                        title="Seu pedido foi Indeferido pelo(s) seguinte(s) motivo: {{$rd->anotacoes}}">
                                                         <span onclick="exibirAnotacoes({{$rd->id}})"
@@ -147,13 +146,13 @@
                                             @endif
                                             {{-- Status ficha Concluida --}}
                                             @if($rd->status == "Concluido")
-                                                <li style="color:#00650A; background-color: var(--confirmar); border-radius: 0.5rem">
-                                                    {{ $rd->status }}
+                                                <li style="color:#00A23E">
+                                                    <strong>{{ $rd->status }}</strong>
                                                 </li>
                                             @endif
                                             @if($rd->status == "Rejeitado")
-                                                <li style="color: #BE0303; background-color: var(--destaque); border-radius: 0.5rem;">
-                                                    {{ $rd->status }}
+                                                <li  style="color: #D20101">
+                                                    <strong>{{ $rd->status }}</strong>
                                                     <a data-toggle="tooltip" data-placement="left"
                                                        title="Seu pedido foi rejeitado pelo(s) seguinte(s) motivo: {{$rd->anotacoes}}">
                                                         <span onclick="exibirAnotacoes({{$rd->id}})"
@@ -168,24 +167,28 @@
                                 </ul>
                             </td>
                             <td class="text-center align-middle">
-                                <form id="formExcluirRequisicao" onclick="confirmarExclusao()"
-                                      action="{{route('excluir-requisicao',$r->id)}}" method="POST">
-                                    @csrf
-                                    @if(!$tudoAndamento)
+                                <div class="btn-group">
+                                    <form id="formExcluirRequisicao" onclick="confirmarExclusao()"
+                                          action="{{route('excluir-requisicao',$r->id)}}" method="POST">
+                                        @csrf
+                                        @if(!$tudoAndamento)
 
-                                    @else
-                                        <button class="btn " type="submit"><img
-                                                src="{{asset('images/trash-solid.svg')}}" alt="" style="width:20px">
-                                        </button>
-                                    @endif
-                                </form>
-                                <div>
-                                    @if(\App\Models\Requisicao_documento::where('requisicao_id',$r->id)->first()->status == 'Concluido')
-                                        <a type="button"
-                                           href={{ route('gerar-ficha-aluno',\App\Models\Requisicao_documento::where('requisicao_id',$r->id)->first()->id) }}>
-                                            Baixar ficha
-                                        </a>
-                                    @endif
+                                        @else
+                                            <button class="btn" type="submit" style="background-color: transparent">
+                                                <img src="images/botao_remover.svg" height="30px" title="Excluir Solicitação">
+                                            </button>
+                                        @endif
+                                    </form>
+                                    <div class="align-middle">
+                                        @if(\App\Models\Requisicao_documento::where('requisicao_id',$r->id)->first()->status == 'Concluido')
+                                            <a type="button"
+                                               href={{ route('gerar-ficha-aluno',\App\Models\Requisicao_documento::where('requisicao_id',$r->id)->first()->id) }}>
+                                                <button class="btn" style="background-color: transparent">
+                                                    <img src="images/botao_dowload_aquivo.svg" height="30px" title="Baixar Ficha">
+                                                </button>
+                                            </a>
+                                        @endif
+                                    </div>
                                 </div>
                             </td>
                         </tr>

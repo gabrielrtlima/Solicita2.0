@@ -1,98 +1,110 @@
 @extends('layouts.app')
 
 @section('conteudo')
-  
-  <div class="container">
-    
 
-    <form action="{{  route('listar-relatorio-post')  }}" method="POST">
-      @csrf
-      <div class="form-row " >
-        <div class="form-group col-md-6">
-          <label for="example-date-input1" class="col-form-label">Inicio</label>
-          <input class="form-control  @error('dataInicio') is-invalid @enderror " type="date" name="dataInicio" value="2020-04-23" id="example-date-input1">
-          @error('dataInicio')
-            <span class="invalid-feedback" role="alert" style="overflow: visible; display:block">
-            <strong>{{ $message }}</strong>
-            </span>
-          @enderror
+    <div class="container">
+        <div class="row" style="border-bottom: var(--textcolor) 2px solid">
+            <span class="titulo">Relatório</span>
         </div>
-        <div class="form-group col-md-6">
-          <label for="example-date-input2" class="col-form-label">Fim</label>
-          <input class="form-control  @error('dataFim') is-invalid @enderror" type="date" name="dataFim" value="2020-04-23" id="example-date-input2">
-          @error('dataFim')
-            <span class="invalid-feedback" role="alert" style="overflow: visible; display:block">
-            <strong>{{ $message }}</strong>
-            </span>
-          @enderror
+    </div>
+
+    <div class="container mt-3 align-middle" style="background-color: #C2C2C2; border-radius: 1rem">
+        <form action="{{  route('listar-relatorio-post')  }}" method="POST">
+            @csrf
+            <div class="row pt-3 justify-content-between">
+                <div  style="align-items: center" class="form-group p-0 ml-3">
+                    <button type="submit" class="btn" style="background-color: #C2C2C2">
+                        <img style="color: white" src="{{asset('images/botao_pesquisa.svg')}}" width="25px">
+                    </button>
+                </div>
+                <div class="input-group date form-group col-md-5">
+                    <label for="example-date-input1" class="col-form-label mr-2">Início:</label>
+                    <input style="border-radius: 0.5rem" class="form-control  @error('dataInicio') is-invalid @enderror " type="date"
+                           name="dataInicio" value="2020-04-23" id="example-date-input1">
+                    @error('dataInicio')
+                    <span class="invalid-feedback" role="alert" style="overflow: visible; display:block">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="input-group date form-group col-md-5">
+                    <label for="example-date-input2" class="col-form-label mr-2">Fim:</label>
+                    <input style="border-radius: 0.5rem" class="form-control  @error('dataFim') is-invalid @enderror" type="date" name="dataFim" value="2020-04-23" id="example-date-input2">
+                    @error('dataFim')
+                    <span class="invalid-feedback" role="alert" style="overflow: visible; display:block">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="caixaSelecao shadow text-center p-5 my-3" style="background-color: #3C498F">
+                <div class="card-body d-flex justify-content-center">
+                    <span class="textoCaixa">Declaração de Vínculo</span>
+                </div>
+                <span class="textoCaixa2">
+                    @if(isset($contadorDeclaracaoVinculo))
+                        {{$contadorDeclaracaoVinculo}}
+                    @endif
+                </span>
+            </div>
+            <div class="caixaSelecao shadow text-center p-5 my-3" style="background-color: #102AB8">
+                <div class="card-body d-flex justify-content-center">
+                    <span class="textoCaixa">Comprovante de Matrícula</span>
+                </div>
+                <span class="textoCaixa2">
+                    @if(isset($contadorComprovanteMatricula))
+                        {{$contadorComprovanteMatricula}}
+                    @endif
+                </span>
+            </div>
+            <div class="caixaSelecao shadow text-center p-5 my-3" style="background-color: #4D64DF">
+                <div class="card-body d-flex justify-content-center">
+                    <span class="textoCaixa pt-3">Histórico</span>
+                </div>
+                <span class="textoCaixa2">
+                    @if(isset($contadorHistorico))
+                        {{$contadorHistorico}}
+                    @endif
+                </span>
+            </div>
+            <div class="caixaSelecao shadow text-center p-2 my-3" style="background-color: #102490">
+                <div class="card-body d-flex justify-content-center">
+                    <span class="textoCaixa pt-4">Programa de Disciplina</span>
+                </div>
+                <span class="textoCaixa2">
+                    @if(isset($contadorProgramaDisciplina))
+                        {{$contadorProgramaDisciplina}}
+                    @endif
+                </span>
+            </div>
         </div>
-      </div>
-      
-      <button type="submit" class="btn btn-primary ">Pesquisar</button>
-    </form> 
-    <hr>
-  
-    <table class="table table-striped" id="table" >
-      
-      <thead class="lmts-primary table-borderless" style="border-color:#1B2E4F;" >
-        <tr >        
-          
-          <th scope="col" class="titleColumn" style="white-space:nowrap;">DECLRAÇÃO DE VÍNCULO</th>
-          <th scope="col" class="titleColumn" style="white-space:nowrap;">COMPROVANTE DE MATRÍCULA</th>
-          <th scope="col" class="titleColumn" style="white-space:nowrap;">HISTÓRICO</th>
-          <th scope="col" class="titleColumn" style="white-space:nowrap;">PROGRAMA DE DISCIPLINA</th>
-          <th scope="col" class="titleColumn" style="white-space:nowrap;">OUTROS</th>
-          <th scope="col" class="titleColumn" style="white-space:nowrap;">TOTAL</th>
-        </tr>
-      </thead>
-          <tbody>
-@if(isset($contadorDeclaracaoVinculo) || isset($contadorComprovanteMatricula) || isset($contadorHistorico)
+        <div class="row">
+            <div class="caixaSelecao shadow text-center p-5 my-3" style="background-color: #121E5C">
+                <div class="card-body d-flex justify-content-center">
+                    <span class="textoCaixa">Outros</span>
+                </div>
+                <span class="textoCaixa2">
+                    @if(isset($contadorOutros))
+                        {{$contadorOutros}}
+                    @endif
+                </span>
+            </div>
+            <div class="caixaSelecao shadow text-center p-5 my-3 ml-5" style="background-color: #121E5C">
+                <div class="card-body d-flex justify-content-center">
+                    <span class="textoCaixa">Total</span>
+                </div>
+                <span class="textoCaixa2">
+                    @if(isset($contadorDeclaracaoVinculo) || isset($contadorComprovanteMatricula) || isset($contadorHistorico)
 || isset($contadorProgramaDisciplina) || isset($contadorOutros))
-                      <tr>
-                        <td>{{$contadorDeclaracaoVinculo}}</td>  
-                        <td>{{$contadorComprovanteMatricula}}</td>
-                        <td>{{$contadorHistorico}}</td>
-                        <td>{{$contadorProgramaDisciplina}}</td>
-                        <td>{{$contadorOutros}}</td>
-                        <td>{{$total}}</td>
-                      </tr>         
-@endif 
- 
-          </tbody> 
-    </table>        
-      
-
-  </div>
-
-  {{--   INICIO DA TABELA DE RESULTADO --}}
-
-  
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
-integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+                        {{$total}}
+                    @endif
+                </span>
+            </div>
+        </div>
+    </div>
 @endsection
-
-
-
-
-
-
-
-{{--   @foreach($listaRequisicao_documentos as $requisicao_documento)
-    
-                      <tr>
-                        @if($requisicao_documento["requisicoes_documentos"]["documento_id"] == 1)
-                          <td> $contadorDeclaracaoVinculo++ </td>
-                        @endif
-                        
-                        <td></td>
-                        <td>x</td>
-                        <td>x</td>
-                        <td>x</td>
-                        <td>x</td>
-                      </tr>        
-   
-  @endforeach  --}}
-
-  {{-- var_dump({{ $listaRequisicao_documentos[0]["id"] }}); --}}

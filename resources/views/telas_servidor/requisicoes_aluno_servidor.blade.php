@@ -1,17 +1,8 @@
 @extends('layouts.app')
 
 @section('conteudo')
-<div class="container-fluid" style="min-height:100vh">
 
-  {{-- <div class="row jusify-content-center d-flex justify-content-center">
-    <div class="col-sm-10">
-      <div class="alert alert-danger" role="alert">
-        <h3 align="center">Atenção</h3>
-      <h4 align="center">A entrega dos documentos solicitados está condicionada a apresentação de <b>Documento Oficial com foto</b>!</h4>
-      </div>
-    </div>
-  </div>
- --}}
+<div class="container-fluid" style="min-height:100vh;">
   <div class="row justify-content-sm-center">
     <div class="col-sm-10">
       <h2 class="tituloTabela">{{Auth::user()->name}}</h2>
@@ -152,8 +143,6 @@
   </div>
 
 </div>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <script>
       function confirmarExclusao(){

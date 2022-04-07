@@ -16,7 +16,6 @@
                 <div class="form-row">
                     <div class="col-md-12" style="margin-bottom: 1rem;">
                         <div class="row justify-content-between">
-                            <div class="col-md-2"></div>
                             <div class="col-md-2">
                                 <a href="http://upe.br/garanhuns/" target="_blank"><img
                                         src="{{ asset('images/logo_upe.png') }}" alt="Logo" width="75px;"
@@ -32,15 +31,14 @@
                                         src="{{ asset('images/logo_ufape_color.png') }}" alt="Logo" width="160px;"
                                         style="border-left: 1px rgba(0, 0, 255, 0.274) solid; padding-left: 15px;"></a>
                             </div>
-                            <div class="col-md-2"></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 text-center mb-2">
+            <div class="col-md-4 text-center mt-1">
                 <span class="textoRodape">Redes do LMTS:</span>
-                <div class="row justify-content-center text-center">
+                <div class="row justify-content-center text-center mt-2">
                     <a href="https://www.facebook.com/LMTSUFAPE/" target="_blank" class="col-md-1 p-0"> <img height="40"
                                                                                                              src="{{asset('images/facebook_logo.png')}}"></a>
                     <a href="https://www.instagram.com/lmts_ufape/" target="_blank" class="col-md-1 p-0 mx-2"> <img

@@ -5,6 +5,14 @@
     Home
 @endsection -->
 
+<style>
+    select[readonly] {
+        background: #eee; /*Simular campo inativo - Sugestão @GabrielRodrigues*/
+        pointer-events: none;
+        touch-action: none;
+    }
+</style>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-7">
@@ -50,7 +58,7 @@
                 <div class="col-md-12 corpoFicha shadow my-4">
                     <div class="row">
                         <div class="col-md-12 cabecalho py-2">
-                            <span class="tituloCabecalho">Dados para o Biliotecario</span>
+                            <span class="tituloCabecalho">Dados para o Biliotecario(a)</span>
                         </div>
                     </div>
                     <div class="row">
@@ -58,17 +66,14 @@
                             <div class="form-group">
                                 <label for="cutter">Cutter: <span style="color: red">*</span></label>
                                 <input type="text" class="form-control" id="cutter" readonly name="cutter"
-                                       placeholder="Digite o código de Cutter" @if($fichaCatalografica->cutter == null)
-                                       value="" required @else value="{{ $fichaCatalografica->cutter }}"
-                                       disabled @endif>
+                                       placeholder="Digite o código de Cutter" value="{{ $fichaCatalografica->cutter }}"
+                                        readonly>
                             </div>
 
                             <div class="form-group">
                                 <label for="classificacao">Classificação: <span style="color: red">*</span></label>
                                 <input type="number" class="form-control" id="classificacao" readonly name="classificacao"
-                                       placeholder="Digite a classificação"
-                                       @if($fichaCatalografica->classificacao == null) value="" required
-                                       @else value="{{ $fichaCatalografica->classificacao  }}" disabled @endif>
+                                       placeholder="Digite a classificação" value="{{ $fichaCatalografica->classificacao  }}" readonly>
                             </div>
                         </div>
                     </div>
@@ -152,6 +157,28 @@
                                                     @if($fichaCatalografica->ilustracao == 'nao_possui') selected @endif>
                                                 Não Possui
                                             </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-between">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inclui_anexo">Inclui Anexo ? <span style="color: red">*</span></label>
+                                        <select class="form-control" id="inclui_anexo" name="inclui_anexo" readonly="readonly">
+                                            <option @if($fichaCatalografica->inclui_anexo == 0) selected @endif value="0">Não</option>
+                                            <option @if($fichaCatalografica->inclui_anexo == 1) selected @endif value="1">Sim</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inclui_apendice">Inclui Apêndice ? <span style="color: red">*</span></label>
+                                        <select class="form-control" id="inclui_apendice" name="inclui_apendice" readonly="readonly">
+                                            <option @if($fichaCatalografica->inclui_apendice == 0) selected @endif value="0">Não</option>
+                                            <option @if($fichaCatalografica->inclui_apendice == 1) selected @endif value="1">Sim</option>
                                         </select>
                                     </div>
                                 </div>
@@ -493,7 +520,7 @@
 
                     <div class="col-md-4">
                         <button type="submit" class="btn btn-block" id="btn_gerar_ficha"
-                           style="background-color: #1A2876; border-radius: 0.5rem; color: white;">Gerar Ficha</button>
+                           style="background-color: #1A2876; border-radius: 0.5rem; color: white;">Visualizar Ficha</button>
                     </div>
                     <input type="hidden" name="tipo_documento" value="{{$tipo_documento}}">
                     <input type="hidden" name="aluno_id" value="{{$aluno->id}}">

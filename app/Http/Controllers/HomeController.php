@@ -71,7 +71,7 @@ class HomeController extends Controller
           }
 
           else if (Auth::user()->tipo == 'bibliotecario') {
-          return view('autenticacao.home-bibliotecario');
+              return redirect()->route('listar-fichas');
           }
         }
       //

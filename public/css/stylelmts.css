@@ -99,8 +99,7 @@ body, html{
 
 .corpoFicha{
     background-color: white;
-    border-bottom-right-radius: 0.5rem;
-    border-bottom-left-radius: 0.5rem;
+    border-radius: 0.5rem;
 }
 
 .backgroundGray {
@@ -143,6 +142,11 @@ body, html{
     font-weight: 600;
     font-size: 30px;
     border-bottom: 2px solid var(--textcolor);
+}
+
+.tituloProtocolo{
+    color: var(--textcolor);
+    font-size: 17px;
 }
 
 .search-input{

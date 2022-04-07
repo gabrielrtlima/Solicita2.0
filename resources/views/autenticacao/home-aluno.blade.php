@@ -41,7 +41,7 @@
             </a>
         </div>
 
-        <div class="text-center p-5 shadow caixaSelecao">
+        <div class="text-center p-5 shadow caixaSelecao" style="background-color: white">
             <a href="{{ route("listar-requisicoes-aluno", ["titulo" => "Listar Documentos Solicitados"]) }}">
                 <div class="text-center">
                     <img class="" src="images/vertical_split.svg" height="120px">

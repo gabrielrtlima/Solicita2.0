@@ -3,44 +3,50 @@
 @section('conteudo')
 <!-- Informações do bibliotecario -->
 
-<div class="row justify-content-center">
-  <div class="col-sm-8">
-    <div class="card">
-      <div class="card-header"><h4>Informações do Bibliotecario</h4></div>
-      <div class="card-body">
-        <div class="row justify-content-center">
-          <div class="col-sm-3">
-            <label for="nome">Nome</label>
-            <h4>{{Auth::user()->name}}</h4>
-          </div>
-          <div class="col-sm-3">
-            <label for="nome">Matricula</label>
-            <h4>{{$bibliotecario->matricula}}</h4>
-          </div>
-          <div class="col-sm-3">
-            <label for="nome">E-mail</label>
-            <h4>{{$user->email}}</h4>
-          </div>
-            <div class="col-sm-3">
-                <label for="biblioteca">Biblioteca</label>
-                <h4>{{$biblioteca->nome}}</h4>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 corpoFicha shadow">
+            <div class="row cabecalho">
+                <div class="col-md-12 py-2 tituloCabecalho">
+                    <div class="row justify-content-between  align-middle">
+                        <div class="col-md-6">
+                            Suas informações
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <a href="{{route('editar-senha-bibliotecario')}}" class="btn p-0">
+                                <img src="images/alterar_senha.svg" height="35px"
+                                     title="Alterar Senha"></a>
+                            <a href="{{route('editar-bibliotecario')}}" class="btn p-0">
+                                <img src="images/botao_editar.svg" height="35px"
+                                     title="Editar Perfil"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <label for="nome" class="textoFicha mb-1">Nome:</label>
+                    <div class="mt-0 pt-0" style="color: var(--textcolor); font-weight: 500; font-size: 18px">{{Auth::user()->name}}</div>
+                </div>
+            </div>
+            <div class="row justify-content-between mt-2">
+                <div class="col-md-6">
+                    <label for="nome" class="textoFicha mb-1">Matrícula:</label>
+                    <div class="mt-0 pt-0" style="color: var(--textcolor); font-weight: 500; font-size: 18px">{{$bibliotecario->matricula}}</div>
+                </div>
+                <div class="col-md-6">
+                    <label for="biblioteca" class="textoFicha mb-1">Biblioteca:</label>
+                    <div class="mt-0 pt-0" style="color: var(--textcolor); font-weight: 500; font-size: 18px">{{$biblioteca->nome}}</div>
+                </div>
+            </div>
+            <div class="row mt-2 mb-3">
+                <div class="col-md-12">
+                    <label for="nome" class="textoFicha mb-1">E-mail</label>
+                    <div class="mt-0 pt-0" style="color: var(--textcolor); font-weight: 500; font-size: 18px">{{$user->email}}</div>
+                </div>
             </div>
         </div>
-
-      </div>
-      <div class="card-footer">
-        <div class="">
-
-          <a href="{{route('editar-senha-bibliotecario')}}" class="btn btn-primary-lmts" style="margin-right:10px;float:right">Editar Senha</a>
-          <a href="{{route('editar-bibliotecario')}}" class="btn btn-primary-lmts" style="margin-right:10px;float:right">Editar Informações</a>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
-
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
 @endsection

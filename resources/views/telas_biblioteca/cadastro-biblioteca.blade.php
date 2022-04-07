@@ -3,72 +3,79 @@
 
 @section('conteudo')
 
-<div class="container-fluid background-blue" style="min-height:110vh">
-  <div class="row justify-content-center">
-    <div class="col-sm-3">
-      <div class="card card-cadastro card-cadastro-servidor">
-        <div class="card-body">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-7 corpoRequisicao shadow pb-3">
+                <div class="row mx-1" style="border-bottom: var(--textcolor) 2px solid">
+                    <div class="col-md-12 tituoRequisicao mt-3 p-0">
+                        Cadastro de Biblioteca
+                    </div>
+                </div>
 
-          <div class="row justify-content-center">
-            <h2>Cadastrar Biblioteca</h2>
-          </div>
-          <form action="{{  route('criar-biblioteca')  }}" method="POST">
-            @csrf
-              <div class="row justify-content-center">
-                  <div class="col-sm-12">
-                      <label for="nome" class="field a-field a-field_a3 page__field ">
-                          <input id="nome" type="name"
-                                 class="form-control @error('nome') is-invalid @enderror field__input a-field__input"
-                                 name="nome" value="{{ old('nome') }}" required autocomplete="nome" autofocus
-                                 placeholder="Nome Completo">
-
-                          <span class="a-field__label-wrap">
-                        <span class="a-field__label">Nome</span>
-                    </span>
-                      </label>
-                      @error('name')
-                      <span class="invalid-feedback" role="alert" style="overflow: visible; display:block">
-                    <strong>{{ $message }}</strong>
-                    </span>
-                      @enderror
-                  </div>
-              </div>
-
-              <select name="unidade" id="unidade" class="browser-default custom-select">
-
-                  <option value="" disable selected hidden>Selecionar biblioteca</option>
-                  @foreach($unidades as $unidade)
-                      <option value="{{$unidade->id}}">{{$unidade->nome}}</option>
-                  @endforeach
-
-                  @error('unidades')
-                  <span class="invalid-feedback" role="alert" style="overflow: visible; display:block">
-                                    <strong>{{ $message }}</strong>
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        <form action="{{  route('criar-biblioteca')  }}" method="POST">
+                            @csrf
+                            <div class="row justify-content-center py-2 mt-2">
+                                <div class="form-group col-md-12">
+                                    <label class="textoFicha" for="name">Nome</label>
+                                    <input id="nomeBiblioteca" type="name"
+                                           class="form-control @error('name') is-invalid @enderror backgroundGray"
+                                           name="name" value="{{ old('name') }}" required autocomplete="name"
+                                           autofocus placeholder="Digite o nome da Biblioteca">
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert" style="overflow: visible; display:block">
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                  @enderror
-              </select>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row justify-content-center py-2 mt-2">
+                                <div class="form-group col-md-12">
+                                    <label class="textoFicha" for="email">E-mail</label>
+                                    <input id="email" type="email"
+                                           class="form-control @error('name') is-invalid @enderror backgroundGray"
+                                           name="email" value="" required autocomplete="name"
+                                           autofocus placeholder="Digite o E-mail da Biblioteca">
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert" style="overflow: visible; display:block">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
 
-            <!-- Botões -->
-            <div class="form-group row justify-content-center" style="margin-top:60px">
-                <div class="col-sm-6">
-                <a class="btn btn-secondary btn-cadastro-primary" href="{{  route('listar-biblioteca')}}" >Voltar</a>
+                            <div class="row justify-content-center py-2">
+                                <div class="form-group col-md-12">
+                                    <label class="textoFicha" for="campi">Campus</label>
+                                    <select name="campus" id="campi"
+                                            class="form-control @error('campus') is-invalid @enderror backgroundGray" required>
+                                        <option value="{{ $unidade->id }}" disable selected hidden>{{ $unidade->nome }}</option>
+                                        @error('campus')
+                                        <span class="invalid-feedback" role="alert" style="overflow: visible; display:block">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Botões -->
+                            <div class="row justify-content-between my-2">
+                                <div class="col-md-6">
+                                    <a style="background-color: var(--padrao); border-radius: 0.5rem; color: white; font-size: 17px" class="btn" href="{{ route('listar-bibliotecas', ['unidade_id' => $unidade->id]) }}">{{ __('Voltar') }}</a>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <button style="background-color: var(--confirmar); border-radius: 0.5rem; color: white; font-size: 17px" type="submit" class="btn"
+                                            onclick="confirmacaoCadastro();">
+                                        {{ __('Salvar') }}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-
-                <div class="col-sm-6">
-                    <button type="submit" class="btn lmts-primary btn-cadastro-primary">
-                        {{ __('Cadastrar') }}
-                    </button>
-                </div>
-
             </div>
-
-          </form>
         </div>
-      </div>
-
     </div>
-  </div>
-</div>
-
-
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AlertaFichaMail;
 use App\Models\Aluno;
 use App\Models\Biblioteca;
 use App\Models\Bibliotecario;
@@ -23,6 +24,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use App\Mail\AlertaFichaGerada;
 
 class BibliotecarioController extends Controller
 {
@@ -65,10 +67,6 @@ class BibliotecarioController extends Controller
         $tipo_documento = $fichaCatalografica->tipo_documento_id;
         $documentoEspecificoNome = TipoDocumento::where('id', $tipo_documento)->first()->tipo;
         $bibliotecario = Bibliotecario::find($requisicao->bibliotecario_id);
-        $bibli = Bibliotecario::where('user_id', Auth::user()->id)->first();
-
-        $data_bibi = date_create_from_format('Y-m-d H:i:s', $requisicao->updated_at);
-        $data_agora = date_create_from_format('Y-m-d H:i:s', date('Y-m-d H:i:s'));
 
         if ($documentoEspecificoNome == 'Monografia')
             $documento = Monografia::where('ficha_catalografica_id', $fichaCatalografica->id)->first();
@@ -211,6 +209,9 @@ class BibliotecarioController extends Controller
         $documentosRequisitados->updated_at = time();
         $documentosRequisitados->bibliotecario_id = $bibliotecario->id;
         $documentosRequisitados->update();
+        $alunoUser = User::find(Aluno::find($documentosRequisitados->aluno_id)->user_id);
+
+        \Illuminate\Support\Facades\Mail::send(new AlertaFichaGerada($alunoUser, $documentosRequisitados));
         return redirect(Route('listar-fichas'))->with('success', 'Ficha Atualizada com Sucesso!');
     }
 
@@ -237,6 +238,10 @@ class BibliotecarioController extends Controller
         $requisicao->bibliotecario_id = $bibliotecario->id;
 
         $requisicao->update();
+
+        $alunoUser = User::find(Aluno::find($requisicao->aluno_id)->user_id);
+
+        \Illuminate\Support\Facades\Mail::send(new AlertaFichaGerada($alunoUser, $requisicao));
         return redirect(Route('listar-fichas'));
     }
 

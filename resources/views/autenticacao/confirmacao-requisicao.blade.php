@@ -44,7 +44,7 @@
                                 <div class="col-sm-12">
                                     <span class="tituloProtocolo">Confirmamos o recebimento de sua solicitação para o(s) documento(s) abaixo:</span>
                                     <div class="py-2 px-2 textoProtocolo">
-                                        <ul>
+                                        <ul class="list-group list-unstyled">
                                             @foreach ($arrayAux as $docSolicitado)
                                                 <li value="Documentos solicitados">
                                                     @if($docSolicitado->id==3){{$docSolicitado->tipo}}
@@ -52,12 +52,12 @@
                                                 </li>
 
                                                 @if($docSolicitado->documento_id==4)
-                                                    <h5>Descrição do documento
-                                                        solicitado {{$docSolicitado->detalhes}}</h5>
+                                                    <span class="textoFicha">Descrição do documento
+                                                        solicitado {{$docSolicitado->detalhes}}</span>
                                                 @endif
                                                 @if($docSolicitado->documento_id==5)
-                                                    <h5>Descrição do documento
-                                                        solicitado {{$docSolicitado->detalhes}}</h5>
+                                                    <span class="textoFicha">Descrição do documento
+                                                        solicitado {{$docSolicitado->detalhes}}</span>
                                                 @endif
                                             @endforeach
                                         </ul>
@@ -75,7 +75,7 @@
                             {{-- hora requisição --}}
                             <div class="row form-group">
                                 <div class="col-sm-12">
-                                    <label class="textoFicha">Hora da requisição</label>
+                                    <label class="tituloProtocolo">Hora da requisição</label>
                                     <div class="py-2 px-2 textoProtocolo">{{$hour}}</div>
                                 </div>
                             </div>

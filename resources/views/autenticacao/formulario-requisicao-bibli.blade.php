@@ -43,7 +43,7 @@
                             @foreach($tipos_documentos as $tipo)
                                 <div>
                                     <input type="radio" name="documento" value="{{$tipo->id}}"
-                                           id="{{$tipo->tipo}}" @if($tipo->tipo == 'Monografia') checked @endif>
+                                           id="{{$tipo->tipo}}" @if($tipo->tipo == 'Dissertacao') checked @endif>
                                     @if($tipo->tipo == 'Monografia')Monografia
                                     @elseif($tipo->tipo == 'Tese')Tese
                                     @elseif($tipo->tipo == 'TCC')Trabalho de Conclusão de Curso

@@ -11,47 +11,54 @@ use Illuminate\Support\Facades\Hash;
 
 class BibliotecaController extends Controller
 {
-     // Redireciona para tela de login ao entrar no sistema
-  public function index()
-  {
-    //return view('biblioteca.listar');
-  }
+    // Redireciona para tela de login ao entrar no sistema
+    public function index()
+    {
+        //return view('biblioteca.listar');
+    }
 
-  public function createBiblioteca()
-  {
-      $unidades = Unidade::all();
-    return view('telas_biblioteca.cadastro-biblioteca', compact('unidades'));
-  }
+    public function createBiblioteca(Request $request)
+    {
+        $unidade = Unidade::find($request->unidade_id);
+        return view('telas_biblioteca.cadastro-biblioteca', compact('unidade'));
+    }
 
 
-  public function storeBiblioteca(Request $request) {
-    $request->validate([
-      'nome' => 'required|string|max:255',
-    ]);
-    $biblioteca = new Biblioteca();
-    $biblioteca->nome = $request->nome;
-    $biblioteca->unidade_id = $request->unidade;
-    $biblioteca->save();
-    return redirect()->route('home')->with('success', 'Biblioteca cadastrada com sucesso!');
-  }
+    public function storeBiblioteca(Request $request)
+    {
+        $biblioteca = new Biblioteca();
+        $biblioteca->nome = $request->name;
+        $biblioteca->email = $request->email;
+        $biblioteca->unidade_id = $request->campus;
+        $biblioteca->save();
+        return redirect()->route('home')->with('success', 'Biblioteca cadastrada com sucesso!');
+    }
 
-  public function editarBiblioteca(Request $request){
-      $biblioteca = Biblioteca::find($request->id_biblioteca);
-    return view('telas_biblioteca.editar-biblioteca', ['biblioteca'=>$biblioteca]);
-  }
-  public function atualizarBiblioteca(Request $request){
-      $biblioteca = Biblioteca::find($request->id_biblioteca);
-    $request->validate(['nome' => ['required'],
-      ]);
-    $biblioteca->nome = $request->nome;
-    $biblioteca->save();
-    return redirect()->route('listar-biblioteca')
-                                            ->with('success', 'A biblioteca foi atualizada!');
-  }
+    public function editarBiblioteca(Request $request)
+    {
+        $unidades = Unidade::all();
+        $biblioteca = Biblioteca::find($request->biblioteca_id);
+        return view('telas_biblioteca.editar-biblioteca', compact('biblioteca', 'unidades'));
+    }
 
-    public function listarBiblioteca(){
-        $biblioteca = Biblioteca::all(); //Bibliotecario autenticado
-        return view('telas_biblioteca.listar-bibliotecas', ['bibliotecas'=>$biblioteca]);
+    public function atualizarBiblioteca(Request $request)
+    {
+        $biblioteca = Biblioteca::find($request->biblioteca_id);
+        $biblioteca->nome = $request->name;
+        $biblioteca->email = $request->email;
+
+        $unidadeAntiga = $biblioteca->unidade_id;
+
+        $biblioteca->unidade_id = $request->campus;
+        $biblioteca->update();
+        return redirect()->route('listar-bibliotecas', ['unidade_id' => $unidadeAntiga])->with('success', 'Biblioteca atualizada com sucesso!');
+    }
+
+    public function listarBiblioteca(Request $request)
+    {
+        $unidade = Unidade::find($request->unidade_id);
+        $bibliotecas = Biblioteca::all(); //Bibliotecario autenticado
+        return view('telas_biblioteca.listar-bibliotecas', compact('bibliotecas', 'unidade'));
     }
 
 }

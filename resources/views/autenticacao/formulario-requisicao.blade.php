@@ -42,7 +42,7 @@
                         <div class="py-3">
                             <label class="textoFicha">Tipo de Documento:</label>
                             <div>
-                                <input type="radio" name="declaracaoVinculo" value="Declaracao de Vinculo"
+                                <input type="checkbox" name="declaracaoVinculo" value="Declaracao de Vinculo"
                                        id="declaracaoVinculo"> Declaração de vínculo (também disponível pelo
                                 link:</input>
                                 <a target="_blank"
@@ -50,16 +50,16 @@
 
                             </div>
                             <div>
-                                <input type="radio" name="comprovanteMatricula" value="Comprovante de Matricula"
+                                <input type="checkbox" name="comprovanteMatricula" value="Comprovante de Matricula"
                                        id="comprovanteMatricula"> Comprovante de matrícula.</input></br>
                             </div>
                             <div>
-                                <input type="radio" name="historico" value="Historico" id="historico"> Histórico
+                                <input type="checkbox" name="historico" value="Historico" id="historico"> Histórico
                                 Escolar.</input></br>
                             </div>
 
                             <div>
-                                <input type="radio" name="programaDisciplina" value="Programa de Disciplina"
+                                <input type="checkbox" name="programaDisciplina" value="Programa de Disciplina"
                                        id="programaDisciplina"
                                        onclick="checaSelecaoProgramaDisciplina()"> Programa de Disciplina (informar abaixo o nome da disciplina e a finalidade).</input>
                                 </br>
@@ -86,7 +86,7 @@
                             </div>
 
                             <div>
-                                <input type="radio" name="outros" value="Outros" id="outros"
+                                <input type="checkbox" name="outros" value="Outros" id="outros"
                                        onclick="checaSelecaoOutros()"> Outros (informar abaixo).<br>
                                 </input>
                                 <textarea maxlength="255"

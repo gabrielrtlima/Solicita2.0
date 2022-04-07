@@ -8,7 +8,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-7">
-            <div class="row mt-5 tituloFicha">
+            <div class="row tituloFicha">
                 <div class="col-md-12">
                     Ficha Catalográfica -
                     @if($tipo_documento == 2)Monografia
@@ -126,7 +126,7 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="inclui_apendice">Inclui Apendice ? <span style="color: red">*</span></label>
+                                        <label for="inclui_apendice">Inclui Apêndice ? <span style="color: red">*</span></label>
                                         <select class="form-control" id="inclui_apendice" name="inclui_apendice">
                                             <option value="0">Não</option>
                                             <option value="1">Sim</option>
@@ -479,6 +479,13 @@
             e.preventDefault();
         }
     });
+
+    var sel = $('#produto');
+    var selected = sel.val(); // cache selected value, before reordering
+    var opts_list = sel.find('option');
+    opts_list.sort(function(a, b) { return $(a).text() > $(b).text() ? 1 : -1; });
+    sel.html('').append(opts_list);
+    sel.val(selected); // set cached selected value
 </script>
 
 @endsection

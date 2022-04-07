@@ -292,13 +292,11 @@ class RequisicaoController extends Controller
         $documentosRequisitados->save();
 
 
-        $bibliotecarios = Bibliotecario::all();
+        $bibliotecas = Biblioteca::all();
         $unidadeId = $perfil->unidade_id;
-        foreach ($bibliotecarios as $bibliotecario) {
-            $bibliotecaBibliotecario = Biblioteca::find($bibliotecario->biblioteca_id);
-            $userBibliotecario = User::find($bibliotecario->user_id);
-            if($unidadeId == $bibliotecaBibliotecario->unidade_id) {
-                \Illuminate\Support\Facades\Mail::send(new AlertaFichaMail($userBibliotecario, Auth::user()));
+        foreach ($bibliotecas as $biblioteca) {
+            if($unidadeId == $biblioteca->unidade_id) {
+                \Illuminate\Support\Facades\Mail::send(new AlertaFichaMail($biblioteca, Auth::user(), $unidade));
             }
         }
 
@@ -571,7 +569,8 @@ class RequisicaoController extends Controller
 
     public function exibirPesquisa()
     {
-        return view('telas_servidor.pesquisa_servidor');
+        $alunos = Aluno::all();
+        return view('telas_servidor.pesquisa_servidor', compact('alunos'));
     }
 
     public function pesquisarAluno(Request $request)
