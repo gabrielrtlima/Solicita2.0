@@ -25,6 +25,18 @@ class PerfilSeeder extends Seeder
         'valor'=>true
       ]);
 
+        $aluno_id = DB::table('alunos')->where('cpf','12345678922')->pluck('id');
+        $unidade_id = DB::table('unidades')->where('nome','UPE - Campus Garanhuns')->pluck('id');
+        $curso_id = DB::table('cursos')->where('nome','Bacharelado em Engenharia de Software')->pluck('id');
+        DB::table('perfils')->insert([
+            'default'=>'Bacharelado em Engenharia de Software',
+            'situacao'=>'Matriculado',
+            'aluno_id'=>$aluno_id[0],
+            'unidade_id'=>$unidade_id[0],
+            'curso_id'=>$curso_id[0],
+            'valor'=>true
+        ]);
+
 
 
 //      $aluno_id = DB::table('alunos')->where('cpf','98765432100')->pluck('id');

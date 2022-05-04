@@ -49,10 +49,6 @@
                                 <img src="images/tag.svg" width="30px">
                                 <span class="px-1 textoHome">Solicitação de ficha catalográfica.</span>
                             </div>
-                            <div>
-                                <img src="images/tag.svg" width="30px">
-                                <span class="px-1 textoHome">Solicitação de documentos ao DRCA.</span>
-                            </div>
                         </div>
                     </div>
                 </div>

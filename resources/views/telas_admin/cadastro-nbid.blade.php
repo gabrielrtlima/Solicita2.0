@@ -7,17 +7,14 @@
         <div class="row justify-content-center">
             <div class="col-md-7 corpoRequisicao shadow pb-3">
                 <div class="row mx-1" style="border-bottom: var(--textcolor) 2px solid">
-                    <div class="col-md-12 tituoRequisicao mt-3 p-0 justify-content-between align-items-center" style="display: flex">
-                        Cadastro de Bibliotecário
-                        <a class="textoFicha align-items-center p-0 pr-2" href="{{ route('cadastro-nbid') }}" style="background-color: var(--textcolor); border-radius: 0.5rem; color: white; line-height: 0; text-decoration: none"; >
-                            <img src="/images/botao_add.svg" width="29px" title="Adicionar usuário NBID" >Adicionar Usuário NBID
-                        </a>
+                    <div class="col-md-12 tituoRequisicao mt-3 p-0 justify-content-between" style="display: flex">
+                        Cadastro de Bibliotecário NBID
                     </div>
                 </div>
 
                 <div class="row justify-content-center">
                     <div class="col-md-12">
-                        <form action="{{  route('criar-bibliotecario')  }}" method="POST">
+                        <form action="{{  route('criar-nbid')  }}" method="POST">
                             @csrf
                             <div class="row justify-content-center py-2 mt-2">
                                 <div class="form-group col-md-12">
@@ -25,7 +22,7 @@
                                     <input id="nomeServidor" type="name"
                                            class="form-control @error('name') is-invalid @enderror backgroundGray"
                                            name="name" value="{{ old('name') }}" required autocomplete="name"
-                                           autofocus placeholder="Digite o Nome Completo">
+                                           autofocus placeholder="Digite o Nome">
                                     @error('name')
                                     <span class="invalid-feedback" role="alert" style="overflow: visible; display:block">
                                         <strong>{{ $message }}</strong>
@@ -46,25 +43,6 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
-                                </div>
-                            </div>
-
-                            <div class="row justify-content-center py-2">
-                                <div class="form-group col-md-12">
-                                    <!-- Bibliotecas-->
-                                    <label class="textoFicha" for="bibliotecas">Biblioteca</label>
-                                    <select name="biblioteca" id="bibliotecas"
-                                            class="form-control @error('email') is-invalid @enderror backgroundGray">
-                                        <option value="" disable selected hidden>-- Selecionar biblioteca --</option>
-                                        @foreach($bibliotecas as $biblioteca)
-                                            <option value="{{$biblioteca->id}}">{{$biblioteca->nome}}</option>
-                                        @endforeach
-                                        @error('bibliotecas')
-                                        <span class="invalid-feedback" role="alert" style="overflow: visible; display:block">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </select>
                                 </div>
                             </div>
 

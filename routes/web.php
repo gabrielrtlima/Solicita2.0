@@ -48,6 +48,8 @@ Route::group(['middleware'=> ['CheckAdministrador', 'verified']], function(){
     Route::get('/listar-cursos',[\App\Http\Controllers\CursoController::class,'listarCursos'])->name('listar-cursos');
     Route::get('/editar-cursos',[\App\Http\Controllers\CursoController::class,'editarCurso'])->name('editar-curso');
     Route::post('/editar-cursos',[\App\Http\Controllers\CursoController::class,'atualizarCurso'])->name('atualizar-curso');
+    Route::get('/cadastro-nbid',[\App\Http\Controllers\BibliotecarioController::class,'createNBID'])->name('cadastro-nbid');
+    Route::post('/criar-nbid',[\App\Http\Controllers\BibliotecarioController::class,'storeNBID'])->name('criar-nbid');
 
 
 });

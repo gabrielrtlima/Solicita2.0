@@ -26,11 +26,27 @@ class UsuarioSeeder extends Seeder
 
 
         DB::table('users')->insert([
-
           'name'=>'aluno',
           'email'=>'aluno@gmail',
           'password'=>Hash::make('123456'),
           'tipo'=>'aluno',
+            'email_verified_at'=>'2020-01-01'
+        ]);
+
+        DB::table('users')->insert([
+            'name'=>'aluno_upe',
+            'email'=>'aluno@upe.br',
+            'password'=>Hash::make('123456'),
+            'tipo'=>'aluno',
+            'email_verified_at'=>'2020-01-01'
+        ]);
+
+        DB::table('users')->insert([
+
+            'name'=>'bibliotecario_nbid',
+            'email'=>'bibliotecario@nbid.com',
+            'password'=>Hash::make('123456'),
+            'tipo'=>'bibliotecario',
             'email_verified_at'=>'2020-01-01'
         ]);
 

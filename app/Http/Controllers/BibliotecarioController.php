@@ -8,6 +8,7 @@ use App\Models\Biblioteca;
 use App\Models\Bibliotecario;
 use App\Models\Dissertacao;
 use App\Models\FichaCatalografica;
+use App\Models\Instituicao;
 use App\Models\Monografia;
 use App\Models\PalavraChave;
 use App\Models\Perfil;
@@ -44,12 +45,25 @@ class BibliotecarioController extends Controller
         $requisicaos = Requisicao_documento::all();
         $idUser = Auth::user()->id;
         $bibliotecario = Bibliotecario::where('user_id', $idUser)->first();
-        $unidadeBibliotecario = $bibliotecario->biblioteca->unidade_id;
+        if($bibliotecario->nbid == true){
+            $unidadeBibliotecario = 1;
+        }else {
+            $unidadeBibliotecario = $bibliotecario->biblioteca->unidade_id;
+        }
         $fichas = [];
         $requisicoesFichas = [];
-        foreach ($requisicaos as $requisicao) {
-            $perfil = $requisicao->aluno->perfil->first();
-            if ($requisicao->ficha_catalografica_id != null && $unidadeBibliotecario == $perfil->unidade_id) {
+        $fichasNBID = [];
+        $requisicoesFichasNBID = [];
+        if($bibliotecario->nbid == false){
+            foreach ($requisicaos as $requisicao) {
+                $perfil = $requisicao->aluno->perfil->first();
+                if ($requisicao->ficha_catalografica_id != null && $unidadeBibliotecario == $perfil->unidade_id) {
+                    $requisicoesFichas[] = $requisicao;
+                    $fichas[] = FichaCatalografica::find($requisicao->ficha_catalografica_id);
+                }
+            }
+        }else {
+            foreach($requisicaos as $requisicao){
                 $requisicoesFichas[] = $requisicao;
                 $fichas[] = FichaCatalografica::find($requisicao->ficha_catalografica_id);
             }
@@ -371,6 +385,7 @@ class BibliotecarioController extends Controller
         $userBibliotecario = User::find($bibliotecario->user_id);
         $biblioteca = Biblioteca::find($bibliotecario->biblioteca_id);
         $unidade = Unidade::find($biblioteca->unidade_id);
+        $instituicao = Instituicao::find($unidade->instituicao_id);
 
         if ($tipo_documento == 'Monografia')
             $documento = Monografia::where('ficha_catalografica_id', $ficha->id)->first();
@@ -383,7 +398,7 @@ class BibliotecarioController extends Controller
         else
             $documento = Dissertacao::where('ficha_catalografica_id', $ficha->id)->first();
 
-        $pdf = Pdf::loadView('telas_bibliotecario.gerar_ficha', compact('ficha', 'palavras', 'tipo_documento', 'documento', 'bibliotecario', 'unidade', 'userBibliotecario'));
+        $pdf = Pdf::loadView('telas_bibliotecario.gerar_ficha', compact('ficha', 'palavras', 'tipo_documento', 'documento', 'bibliotecario', 'unidade', 'userBibliotecario', 'instituicao'));
         return $pdf->download($ficha->titulo . "_" . $ficha->autor . strtotime('now') . ".pdf");
     }
 
@@ -401,6 +416,9 @@ class BibliotecarioController extends Controller
         return view('autenticacao.cadastro-bibliotecario', compact('bibliotecas'));
     }
 
+    public function createNBID(){
+        return view('telas_admin.cadastro-nbid');
+    }
     public function perfil()
     {
         $idUser = Auth::user()->id;
@@ -437,6 +455,31 @@ class BibliotecarioController extends Controller
         $bibliotecario->user_id = $usuario->id;
         $bibliotecario->biblioteca_id = $request->input('biblioteca');
         $bibliotecario->crb = $request->crb;
+        $bibliotecario->save();
+        $usuario->sendEmailVerificationNotification();
+        return redirect()->route('home')->with('success', 'Bibliotecario cadastrado com sucesso!');
+    }
+
+    public function storeNBID(Request $request){
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'matricula' => 'required|unique:bibliotecarios|numeric|digits_between:1,10',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+        $usuario = new User();
+        $usuario->name = $request->input('name');
+        $usuario->email = $request->input('email');
+        $usuario->password = Hash::make($request->input('password'));
+        $usuario->tipo = 'bibliotecario';
+        $usuario->save();
+
+        $bibliotecario = new Bibliotecario();
+        $bibliotecario->matricula = $request->input('matricula');
+        $bibliotecario->user_id = $usuario->id;
+        $bibliotecario->crb = $request->crb;
+        $bibliotecario->biblioteca_id = 1;
+        $bibliotecario->nbid = true;
         $bibliotecario->save();
         $usuario->sendEmailVerificationNotification();
         return redirect()->route('home')->with('success', 'Bibliotecario cadastrado com sucesso!');

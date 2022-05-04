@@ -125,9 +125,9 @@
     <!-- Topo da ficha -->
 
     <p>Dados Internacionais de Catalogação na Publicação (CIP)<br></p>
-    @if($unidade->nome == 'UPE - Campus Garanhuns')<p>Universidade de Pernambuco<br></p> @else <p>Universidade Federal
+    @if($instituicao->nome == 'Universidade de Pernambuco')<p>Universidade de Pernambuco<br></p> @else <p>Universidade Federal
         do Agreste de Pernambuco<br></p>@endif
-    @if($unidade->nome == 'UPE - Campus Garanhuns')<p>Núcleo de Gestão de Bibliotecas e Documentação - NBID<br>
+    @if($instituicao->nome == 'Universidade de Pernambuco')<p>Núcleo de Gestão de Bibliotecas e Documentação - NBID<br>
     </p> @else <p>Sistema Integrado de Bibliotecas (SIB-UFAPE)</p><br>@endif
 
 
@@ -171,7 +171,7 @@
                             <td class="recuo">Monografia @if($documento->tipo_curso == 'especializacao')
                                     (Especialização) @elseif($documento->tipo_curso == 'graduacao')
                                     (Graduação) @elseif($documento->tipo_curso == 'mba') (MBA) @endif -
-                                @if($unidade->nome == 'UPE - Campus Garanhuns')<p>Universidade de Pernambuco</p>, @else
+                                @if($instituicao->nome == 'Universidade de Pernambuco')<p>Universidade de Pernambuco</p>, @else
                                     <p>Universidade Federal do Agreste de Pernambuco</p>,@endif
                                 {{ $documento->curso }},
                                 {{ $ficha->local }}, BR-PE, {{ $ficha->ano }}.
@@ -191,7 +191,7 @@
                             </td>@endif
                         </tr>
                         <tr>
-                            <td class="recuo">Tese (Doutorado) - @if($unidade->nome == 'UPE - Campus Garanhuns')<p>
+                            <td class="recuo">Tese (Doutorado) - @if($instituicao->nome == 'Universidade de Pernambuco')<p>
                                     Universidade de Pernambuco</p>, @else
                                     <p>Universidade Federal do Agreste de Pernambuco</p>,@endif
                                  {{ $documento->programa }},
@@ -232,7 +232,7 @@
                                 @elseif($documento->produto == 'empresa_social')Empresa ou Organização Social Inovadora
                                 @elseif($documento->produto == 'processo')Processo / Tecnologia e Produto / Material não
                                     patenteáveis
-                                @endif - @if($unidade->nome == 'UPE - Campus Garanhuns')<p>Universidade de
+                                @endif - @if($instituicao->nome == 'Universidade de Pernambuco')<p>Universidade de
                                     Pernambuco</p>,@else
                                     <p>Universidade Federal do Agreste de Pernambuco</p>,@endif
                                  {{ $documento->programa }},
@@ -251,7 +251,7 @@
                                     </td>@endif
                         </tr>
                         <tr>
-                            <td class="recuo" >Dissertação (Mestrado) - @if($unidade->nome == 'UPE - Campus Garanhuns')
+                            <td class="recuo" >Dissertação (Mestrado) - @if($instituicao->nome == 'Universidade de Pernambuco')
                                     <p>Universidade de Pernambuco</p>, @else
                                     <p>Universidade Federal do Agreste de Pernambuco</p>,@endif
                                  {{ $documento->programa }},
@@ -259,7 +259,7 @@
                             </td>
                         </tr>
                     <!--<p>Programa: {{ $documento->programa }}</p>
-            <p>Campus: {{ $unidade->nome }}</p> -->
+            <p>Campus: {{ $instituicao->nome }}</p> -->
                     @endif
 
                     <tr>
@@ -279,11 +279,11 @@
                                 @if($documento->nome_coorientador != null)
                                     II. {{ $documento->sobrenome_coorientador }}, {{ $documento->nome_coorientador }}
                                     (coorient.)
-                                    III. @if($unidade->nome == 'UPE - Campus Garanhuns')<p>Universidade de
+                                    III. @if($instituicao->nome == 'Universidade de Pernambuco')<p>Universidade de
                                         Pernambuco</p> @else <p>Universidade Federal do Agreste de Pernambuco</p>@endif
                                     IV. Título
                                 @else
-                                    II. @if($unidade->nome == 'UPE - Campus Garanhuns')<p>Universidade de
+                                    II. @if($instituicao->nome == 'Universidade de Pernambuco')<p>Universidade de
                                         Pernambuco</p>@else <p>Universidade Federal do Agreste de Pernambuco</p>@endif
                                     III. Título
                                 @endif</td>
@@ -298,10 +298,10 @@
                                 @if($documento->nome_coorientador != null)
                                     II. {{ $documento->sobrenome_coorientador }}, {{ $documento->nome_coorientador }}
                                     (coorient.)
-                                    III. @if($unidade->nome == 'UPE - Campus Garanhuns')<p>Universidade de
+                                    III. @if($instituicao->nome == 'Universidade de Pernambuco')<p>Universidade de
                                         Pernambuco</p> @else <p>Universidade Federal do Agreste de Pernambuco</p>@endif
                                     {{ $documento->programa }} IV. Título
-                                @else II. @if($unidade->nome == 'UPE - Campus Garanhuns')<p>Universidade de
+                                @else II. @if($instituicao->nome == 'Universidade de Pernambuco')<p>Universidade de
                                     Pernambuco</p> @else <p>Universidade Federal do Agreste de Pernambuco</p>@endif
                                 {{ $documento->programa }} III. Título
 
@@ -314,11 +314,11 @@
                                 @endfor I. {{ $documento->sobrenome_orientador }}, {{ $documento->nome_orientador }}(orient.)
                                 @if($documento->nome_coorientador != null)
                                     II. {{ $documento->sobrenome_coorientador }}, {{ $documento->nome_coorientador }}(coorient.)
-                                    III. @if($unidade->nome == 'UPE - Campus Garanhuns')<p>Universidade de
+                                    III. @if($instituicao->nome == 'Universidade de Pernambuco')<p>Universidade de
                                         Pernambuco</p> @else <p>Universidade Federal do Agreste de Pernambuco</p>@endif
                                     {{ $documento->programa }} IV. Título
                                 @else
-                                    II. @if($unidade->nome == 'UPE - Campus Garanhuns')<p>Universidade de
+                                    II. @if($instituicao->nome == 'Universidade de Pernambuco')<p>Universidade de
                                         Pernambuco</p>@else <p>Universidade Federal do Agreste de Pernambuco</p>@endif
                                     {{ $documento->programa }} III. Título
                                 @endif
@@ -334,11 +334,11 @@
                                 @if($documento->nome_coorientador != null)
                                     II. {{ $documento->sobrenome_coorientador }}, {{ $documento->nome_coorientador }}
                                     (coorient.)
-                                    III. @if($unidade->nome == 'UPE - Campus Garanhuns')<p>Universidade de
+                                    III. @if($instituicao->nome == 'Universidade de Pernambuco')<p>Universidade de
                                         Pernambuco</p> @else <p>Universidade Federal do Agreste de Pernambuco</p>@endif
                                     {{ $documento->programa }} IV. Título
                                 @else
-                                    II. @if($unidade->nome == 'UPE - Campus Garanhuns')<p>Universidade de
+                                    II. @if($instituicao->nome == 'Universidade de Pernambuco')<p>Universidade de
                                         Pernambuco</p>@else <p>Universidade Federal do Agreste de Pernambuco</p>@endif
                                     {{ $documento->programa }} III. Título
                                 @endif</td>

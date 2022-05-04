@@ -15,18 +15,18 @@
 
 <div class="container text-center">
 
-    <div class="row justify-content-between mt-5">
+    <div class="row justify-content-around mt-5">
 
-        <div class="text-center p-5 shadow caixaSelecao" style="background-color: var(--escolaridade);">
-            <a href="{{ route("prepara-requisicao")}}">
-                <div class="text-center pt-4">
-                    <img class="pb-3" src="images/escolaridade-aluno.svg" height="120px">
-                </div>
-                <div class="text-center">
-                    <div class="textoCaixa">Escolaridade</div>
-                </div>
-            </a>
-        </div>
+{{--        <div class="text-center p-5 shadow caixaSelecao" style="background-color: var(--escolaridade);">--}}
+{{--            <a href="{{ route("prepara-requisicao")}}">--}}
+{{--                <div class="text-center pt-4">--}}
+{{--                    <img class="pb-3" src="images/escolaridade-aluno.svg" height="120px">--}}
+{{--                </div>--}}
+{{--                <div class="text-center">--}}
+{{--                    <div class="textoCaixa">Escolaridade</div>--}}
+{{--                </div>--}}
+{{--            </a>--}}
+{{--        </div>--}}
 
         <div class="text-center p-5 shadow caixaSelecao" style="background-color: var(--biblioteca)">
             <a href="{{ route("prepara-requisicao-bibli")}}">
