@@ -27,5 +27,15 @@ class CursoSeeder extends Seeder
         ]);
       }
 
+        $cursos = ['Bacharelado em Engenharia de Software'];
+        $abreviatura = ['BES'];
+        $unidade_id = DB::table('unidades')->where('nome','UPE - Campus Garanhuns')->pluck('id');
+        for ($i=0; $i < sizeof($cursos); $i++) {
+            DB::table('cursos')->updateOrInsert([
+                'nome' => $cursos[$i],
+                'abreviatura' => $abreviatura[$i],
+                'unidade_id' => $unidade_id[0],
+            ]);
+        }
     }
 }

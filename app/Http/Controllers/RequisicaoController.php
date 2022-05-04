@@ -219,6 +219,8 @@ class RequisicaoController extends Controller
             $tese->sobrenome_orientador = $request->sobrenome_orientador;
             $tese->nome_coorientador = $request->nome_coorientador;
             $tese->sobrenome_coorientador = $request->sobrenome_coorientador;
+            $tese->nome_segundo_coorientador = $request->nome_segundo_coorientador;
+            $tese->sobrenome_segundo_coorientador = $request->sobrenome_segundo_coorientador;
             $tese->programa = $request->programa;
             $tese->ficha_catalografica_id = $ficha->id;
             $tese->save();
@@ -239,6 +241,8 @@ class RequisicaoController extends Controller
             $dissertacao->sobrenome_orientador = $request->sobrenome_orientador;
             $dissertacao->nome_coorientador = $request->nome_coorientador;
             $dissertacao->sobrenome_coorientador = $request->sobrenome_coorientador;
+            $dissertacao->nome_segundo_coorientador = $request->nome_segundo_coorientador;
+            $dissertacao->sobrenome_segundo_coorientador = $request->sobrenome_segundo_coorientador;
             $dissertacao->campus = $unidade->nome;
             $dissertacao->programa = $request->programa;
             $dissertacao->ficha_catalografica_id = $ficha->id;

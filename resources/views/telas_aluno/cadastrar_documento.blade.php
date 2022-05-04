@@ -231,7 +231,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="nome_coorientador">Nome do coorientador:</label>
+                                <label for="nome_coorientador">Nome do Coorientador:</label>
                                 <input type="text" class="form-control" id="nome_coorientador" name="nome_coorientador"
                                        placeholder="Digite o Nome do Coorientador" value="">
                             </div>
@@ -241,6 +241,19 @@
                                 <input type="text" class="form-control" id="sobrenome_coorientador"
                                        placeholder="Digite o Sobrenome do Coorientador" value=""
                                        name="sobrenome_coorientador">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="nome_coorientador">Nome do Segundo Coorientador:</label>
+                                <input type="text" class="form-control" id="nome_segundo_coorientador" name="nome_segundo_coorientador"
+                                       placeholder="Digite o Nome do Segundo Coorientador" value="">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sobrenome_coorientador">Sobrenome do Segundo Coorientador: </label>
+                                <input type="text" class="form-control" id="sobrenome_segundo_coorientador"
+                                       placeholder="Digite o Sobrenome do Segundo Coorientador" value=""
+                                       name="sobrenome_segundo_coorientador">
                             </div>
 
                             <div class="form-group">
@@ -367,6 +380,20 @@
                                            placeholder="Digite o Sobrenome do Coorientador" value=""
                                            name="sobrenome_coorientador">
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="nome_coorientador">Nome do Segundo Coorientador:</label>
+                                    <input type="text" class="form-control" id="nome_segundo_coorientador" name="nome_segundo_coorientador"
+                                           placeholder="Digite o Nome do Segundo Coorientador" value="">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="sobrenome_coorientador">Sobrenome do Segundo Coorientador: </label>
+                                    <input type="text" class="form-control" id="sobrenome_segundo_coorientador"
+                                           placeholder="Digite o Sobrenome do Segundo Coorientador" value=""
+                                           name="sobrenome_segundo_coorientador">
+                                </div>
+
                                 <div class="form-group">
                                     <label for="programa">Nome do Programa de Pós-Graduação <span
                                             style="color: red">*</span></label>
