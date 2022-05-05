@@ -16,10 +16,6 @@ class InstituicaoSeeder extends Seeder
 
       $administrador_id = DB::table('administradors')->where('matricula','123456789')->pluck('id');
         DB::table('instituicaos')->insert([
-          'nome'=>'Universidade Federal do Agreste de Pernambuco',
-          'administrador_id'=>$administrador_id[0],
-        ]);
-        DB::table('instituicaos')->insert([
             'nome'=>'Universidade de Pernambuco',
             'administrador_id'=>$administrador_id[0],
         ]);

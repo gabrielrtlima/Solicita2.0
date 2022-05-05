@@ -18,7 +18,7 @@ class UsuarioSeeder extends Seeder
         DB::table('users')->insert([
 
           'name'=>'Administrador',
-          'email'=>'admin@ufrpe.br',
+          'email'=>'admin@upe.br',
           'password'=>Hash::make('123456'),
           'tipo'=>'administrador',
           'email_verified_at'=>'2020-01-01'
@@ -26,16 +26,16 @@ class UsuarioSeeder extends Seeder
 
 
         DB::table('users')->insert([
-          'name'=>'aluno',
-          'email'=>'aluno@gmail',
+          'name'=>'aluno_santoamaro',
+          'email'=>'aluno.santoamaro@upe.br',
           'password'=>Hash::make('123456'),
           'tipo'=>'aluno',
             'email_verified_at'=>'2020-01-01'
         ]);
 
         DB::table('users')->insert([
-            'name'=>'aluno_upe',
-            'email'=>'aluno@upe.br',
+            'name'=>'aluno_garanhuns',
+            'email'=>'aluno.garanhuns@upe.br',
             'password'=>Hash::make('123456'),
             'tipo'=>'aluno',
             'email_verified_at'=>'2020-01-01'
@@ -52,17 +52,8 @@ class UsuarioSeeder extends Seeder
 
         DB::table('users')->insert([
 
-            'name'=>'servidor',
-            'email'=>'servidor@ufrpe.br',
-            'password'=>Hash::make('123456'),
-            'tipo'=>'servidor',
-            'email_verified_at'=>'2020-01-01'
-        ]);
-
-        DB::table('users')->insert([
-
-          'name'=>'bibliotecario_ufape',
-          'email'=>'bibliotecario@ufape.br',
+          'name'=>'bibliotecario_santoamaro',
+          'email'=>'bibliotecario.santoamaro@upe.br',
           'password'=>Hash::make('123456'),
           'tipo'=>'bibliotecario',
           'email_verified_at'=>'2020-01-01'
@@ -70,8 +61,8 @@ class UsuarioSeeder extends Seeder
 
         DB::table('users')->insert([
 
-          'name'=>'bibliotecario_upe',
-          'email'=>'bibliotecario@upe.br',
+          'name'=>'bibliotecario_garanhuns',
+          'email'=>'bibliotecario.garanhuns@upe.br',
           'password'=>Hash::make('123456'),
           'tipo'=>'bibliotecario',
           'email_verified_at'=>'2020-01-01'

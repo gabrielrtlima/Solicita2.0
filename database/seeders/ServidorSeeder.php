@@ -14,12 +14,6 @@ class ServidorSeeder extends Seeder
      */
     public function run()
     {
-      $unidade_id = DB::table('unidades')->where('nome','UFAPE - SEDE (Unidade Acadêmica de Garanhuns)')->pluck('id');
 
-      DB::table('servidors')->insert([
-        'matricula'=>'123456789',
-        'unidade_id'=>$unidade_id[0],
-        'user_id'=>3,
-      ]);
     }
 }

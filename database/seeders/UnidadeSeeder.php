@@ -16,12 +16,12 @@ class UnidadeSeeder extends Seeder
     {
       $instituicoes = Instituicao::All();
         DB::table('unidades')->insert([
-          'nome'=> 'UFAPE - SEDE (Unidade Acadêmica de Garanhuns)',
+          'nome'=> 'Campus Garanhuns',
           'instituicao_id'=> $instituicoes[0]->id,
         ]);
         DB::table('unidades')->insert([
-            'nome'=> 'UPE - Campus Garanhuns',
-            'instituicao_id'=> $instituicoes[1]->id,
+            'nome'=> 'Campus Santo Amaro',
+            'instituicao_id'=> $instituicoes[0]->id,
         ]);
     }
 }
