@@ -14,7 +14,7 @@ class BibliotecarioSeeder extends Seeder
      */
     public function run()
     {
-        $user_id = DB::table('users')->where('name', 'bibliotecario_ufape')->pluck('id');
+        $user_id = DB::table('users')->where('name', 'bibliotecario_santoamaro')->pluck('id');
         DB::table('bibliotecarios')->insert([
             'matricula' => '12345678900',
             'crb' => 'CRB123',
@@ -22,7 +22,7 @@ class BibliotecarioSeeder extends Seeder
             'biblioteca_id' => 2,
         ]);
 
-        $user_id = DB::table('users')->where('name', 'bibliotecario_upe')->pluck('id');
+        $user_id = DB::table('users')->where('name', 'bibliotecario_garanhuns')->pluck('id');
         DB::table('bibliotecarios')->insert([
             'matricula' => '12345678912',
             'crb' => 'CRB',

@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-sm-12" align="center">
         <a target="_blank" href="http://ufape.edu.br/">
-            <img src="{{$message->embed(public_path() . '/images/logo_ufape_blue_email.png')}}" style="height: 80px">
+            <img src="{{$message->embed(public_path() . '/images/logo_upe.png')}}" style="height: 80px">
         </a>
     </div>
 </div>
@@ -22,8 +22,7 @@
         <p align="center"><font face="Times New Roman" font size="4" color="black">Atenciosamente, </font></p>
 
         <p align="center" style=""><font face="Times New Roman" font size="4" color="black"> <strong>
-                    Universidade Federal do Agreste de Pernambuco<br>
-                    Setor Escolaridade</strong></font></p>
+                    Universidade de Pernambuco<br></strong></font></p>
     </div>
 @else
     <div class="container" style="background-color:white">
@@ -40,8 +39,7 @@
         <p align="center"><font face="Times New Roman" font size="4" color="black">Atenciosamente, </font></p>
 
         <p align="center" style=""><font face="Times New Roman" font size="4" color="black"> <strong> Universidade
-                    Federal do Agreste de Pernambuco<br>
-                    Setor da Biblioteca</strong></font></p>
+                    de Pernambuco<br></strong></font></p>
     </div>
 @endif
 

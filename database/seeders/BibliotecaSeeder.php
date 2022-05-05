@@ -15,15 +15,15 @@ class BibliotecaSeeder extends Seeder
     public function run()
     {
         DB::table('bibliotecas')->insert([
-            'nome'=> 'Biblioteca UPE',
-            'email'=> 'biblioteca@upe.br',
-            'unidade_id' => 2,
+            'nome'=> 'Biblioteca Campus Garanhuns',
+            'email'=> 'biblioteca.garanhuns@upe.br',
+            'unidade_id' => 1,
         ]);
 
         DB::table('bibliotecas')->insert([
-            'nome'=> 'Biblioteca UFAPE',
-            'email'=> 'biblioteca@ufape.br',
-            'unidade_id' => 1,
+            'nome'=> 'Biblioteca Campus Santo Amaro',
+            'email'=> 'biblioteca.santoamaro@ufape.br',
+            'unidade_id' => 2,
         ]);
     }
 }
